@@ -1,0 +1,42 @@
+# ====================================================================
+# Monorepo Global Standard GitIgnore
+# ====================================================================
+
+# OS Specific Files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# --------------------------------------------------------------------
+# Backend (Java / Maven) Built Targets
+# --------------------------------------------------------------------
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+*.class
+
+# --------------------------------------------------------------------
+# Frontend (Node / TypeScript) Built Targets
+# --------------------------------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/out/
+frontend/.next/
+frontend/.env.local
+frontend/.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --------------------------------------------------------------------
+# Infrastructure & Local Cluster Temp Files
+# --------------------------------------------------------------------
+.kube/
+minikube/
+*.log
