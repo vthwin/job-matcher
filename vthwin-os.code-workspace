@@ -1,0 +1,45 @@
+{
+  "folders": [
+    {
+      "name": "📦 CORE REPO ROOT",
+      "path": ".",
+    },
+    {
+      "name": "☕ BACKEND (Spring)",
+      "path": "backend",
+    },
+    {
+      "name": "⚛️ FRONTEND (React)",
+      "path": "frontend",
+    },
+  ],
+  "settings": {
+    // Monorepo Global Exclusion Guardrails
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/target": true,
+      "**/.mvn": true,
+    },
+
+    // JAVA BACKEND CONFIGURATIONS
+    // Explicitly isolate the Java/Spring runtime engine to the backend folder path
+    "java.project.sourcePaths": ["backend/src/main/java"],
+    "java.import.maven.enabled": true,
+    // Ensure Spring Boot Dashboard extension looks strictly at the backend folder
+    "spring-boot.ls.java.home": null,
+
+    // POM XML CONFIGURATIONS
+    "[xml]": {
+      "editor.defaultFormatter": "redhat.vscode-xml",
+      "editor.tabSize": 4,
+      "editor.insertSpaces": true,
+      "editor.formatOnSave": true,
+    },
+    "xml.format.splitAttributes": "splitNewLine",
+    "xml.format.joinCDATALines": false,
+    "xml.format.maxLineWidth": 120,
+    "xml.format.preserveNewlines": "true",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive",
+  },
+}

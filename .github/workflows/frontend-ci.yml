@@ -1,0 +1,36 @@
+name: Frontend CI Validation
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - 'frontend/**' # ◄── Path filtering: Only runs if frontend files change
+    pull_request:
+        branches: [main]
+        paths:
+            - 'frontend/**'
+
+jobs:
+    build-and-lint:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Monorepo Code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js Environment
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+                  cache-dependency-path: 'frontend/package-lock.json'
+
+            - name: Install Dependencies
+              run: |
+                  cd frontend
+                  npm ci
+
+            - name: Verify Production Build Compilation
+              run: |
+                  cd frontend
+                  npm run build

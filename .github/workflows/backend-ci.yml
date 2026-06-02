@@ -1,0 +1,32 @@
+name: Backend CI Validation
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - 'backend/**'
+    pull_request:
+        branches: [main]
+        paths:
+            - 'backend/**'
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Monorepo Code
+              uses: actions/checkout@v4
+
+            - name: Set up Java 25 Runtime
+              uses: actions/setup-java@v4
+              with:
+                  java-version: '25'
+                  distribution: 'temurin'
+                  cache: 'maven'
+                  cache-dependency-path: 'backend/pom.xml'
+
+            - name: Compile and Test with Maven
+              run: |
+                  cd backend
+                  mvn clean verify
