@@ -2,7 +2,10 @@ name: Frontend CI Validation
 
 on:
     push:
-        branches: [main]
+        branches:
+            - main
+            - 'feature/**'
+            - 'bugfix/**'
         paths:
             - 'frontend/**' # ◄── Path filtering: Only runs if frontend files change
     pull_request:
